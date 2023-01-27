@@ -13,6 +13,10 @@ app.use(bodyParser.text());
 
 require(path.join(__dirname, './routes/routes'))(app);
 
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+});
+
 app.listen(PORT, function() {
     console.log('app is listening on PORT: ' + PORT);
 });
